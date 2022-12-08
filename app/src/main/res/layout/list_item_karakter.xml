@@ -36,7 +36,7 @@
             android:id="@+id/status"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:text="Statsu :"
+            android:text="Status :"
             android:textSize="21sp"
             android:textStyle="bold"/>
         <TextView

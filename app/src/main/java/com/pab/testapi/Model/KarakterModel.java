@@ -1,7 +1,9 @@
 package com.pab.testapi.Model;
 
+import android.graphics.drawable.Drawable;
+
 public class KarakterModel {
-    private String name, species, status, gender, image;
+    private String name, species, status, gender,image;
 
     public String getName(){
         return name;
@@ -14,6 +16,9 @@ public class KarakterModel {
     }
     public String getGender(){
         return gender;
+    }
+    public String getImage(){
+        return image;
     }
 
 }
