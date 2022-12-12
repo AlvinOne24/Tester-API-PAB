@@ -1,6 +1,7 @@
 package com.pab.testapi.Adapter;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Build;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -15,6 +16,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.bumptech.glide.Glide;
 import com.bumptech.glide.request.RequestOptions;
+import com.pab.testapi.Activity.DetailActivity;
 import com.pab.testapi.Activity.MainActivity;
 import com.pab.testapi.Model.KarakterModel;
 import com.pab.testapi.R;
@@ -49,15 +51,27 @@ public class AdapterKarakter extends RecyclerView.Adapter<AdapterKarakter.Holder
         holder.tvSpecies.setText(KM.getSpecies());
         holder.tvStatus.setText(KM.getStatus());
         holder.tvGender.setText(KM.getGender());
+        holder.tvTentang.setText(KM.getTentang());
         //Glide.with((Context) listKarakter).load(KM.getClass()).into(holder.ivImage);
-        //Glide.with(holder.ivImage.getContext()).load(KM.getImage()).apply(new RequestOptions().override(350, 550));
+        //Glide.with(holder.ivImage.getContext()).load(KM.getImage()).apply(new RequestOptions().override(300, 300));
+        Glide.with(holder.itemView.getContext()).load(KM.getImage()).apply(new RequestOptions().override(330, 550)).into(holder.ivImage);
 
 
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(holder.itemView.getContext(),"Nama : "+ KM.getName(), Toast.LENGTH_SHORT).show();
+                String name = listKarakter.get(holder.getAdapterPosition()).getName();
+                String tentang = listKarakter.get(holder.getAdapterPosition()).getTentang();
+                String image = listKarakter.get(holder.getAdapterPosition()).getImage();
+
+                Intent send =new Intent(holder.itemView.getContext(), DetailActivity.class);
+                send.putExtra("varNama", name);
+                send.putExtra("varTentang", tentang);
+                send.putExtra("varFoto", image);
+                holder.itemView.getContext().startActivity(send
+                );
+                //Toast.makeText(holder.itemView.getContext(),"Nama : "+ KM.getName(), Toast.LENGTH_SHORT).show();
             }
         });
     }
@@ -69,7 +83,7 @@ public class AdapterKarakter extends RecyclerView.Adapter<AdapterKarakter.Holder
     }
 
     public class HolderData extends RecyclerView.ViewHolder{
-        TextView tvName, tvSpecies, tvStatus, tvGender ;
+        TextView tvName, tvSpecies, tvStatus, tvGender, tvTentang;
         ImageView ivImage;
 
         public HolderData(@NonNull View itemView){
@@ -78,6 +92,7 @@ public class AdapterKarakter extends RecyclerView.Adapter<AdapterKarakter.Holder
             tvSpecies = itemView.findViewById(R.id.tv_species);
             tvStatus = itemView.findViewById(R.id.tv_status);
             tvGender = itemView.findViewById(R.id.tv_gender);
+            tvTentang = itemView.findViewById(R.id.tv_tentang);
             ivImage = itemView.findViewById(R.id.iv_image);
         }
     }
