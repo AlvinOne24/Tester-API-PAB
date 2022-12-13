@@ -60,16 +60,16 @@ public class AdapterKarakter extends RecyclerView.Adapter<AdapterKarakter.Holder
 
         holder.itemView.setOnClickListener(new View.OnClickListener() {
             @Override
-            public void onClick(View v) {
+            public void onClick(View view) {
                 String name = listKarakter.get(holder.getAdapterPosition()).getName();
                 String tentang = listKarakter.get(holder.getAdapterPosition()).getTentang();
                 String image = listKarakter.get(holder.getAdapterPosition()).getImage();
 
-                Intent send =new Intent(holder.itemView.getContext(), DetailActivity.class);
-                send.putExtra("varNama", name);
-                send.putExtra("varTentang", tentang);
-                send.putExtra("varFoto", image);
-                holder.itemView.getContext().startActivity(send
+                Intent kirim =new Intent(holder.itemView.getContext(), DetailActivity.class);
+                kirim.putExtra("varName", name);
+                kirim.putExtra("varTentang", tentang);
+                kirim.putExtra("varImage", image);
+                holder.itemView.getContext().startActivity(kirim
                 );
                 //Toast.makeText(holder.itemView.getContext(),"Nama : "+ KM.getName(), Toast.LENGTH_SHORT).show();
             }
