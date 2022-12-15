@@ -9,7 +9,7 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:padding="6dp"
-        android:background="#B0E0E6">
+        android:background="#5F9EA0">
 
         <ImageView
             android:id="@+id/iv_image"
@@ -109,7 +109,9 @@
             android:layout_marginStart="2dp"
             android:text="tentang"
             android:textSize="13sp"
-            android:layout_marginTop="10dp"/>
+            android:layout_marginTop="10dp"
+            android:maxLines="2"
+            android:ellipsize="end"/>
 
 
     </RelativeLayout>
